@@ -1,0 +1,175 @@
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <table>
+
+            <tr><td><input type="text" ng-model="cityData.CityId" /></td></tr>
+            <tr>
+                <td>City Name</td>
+                <td><input type="text" ng-model="cityData.CityName" /></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" ng-model="cityData.Description" /></td>
+            </tr>
+            <tr>
+                <td><input type="button" ng-click="SendData(cityData)" value="Save" /></td>
+                <td><input type="button" value="Edit City" ng-click="EditCity(cityData)" /></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td><input type="text" ng-model="cityData1.CityId" placeholder="Enter City Id to Delete.."/></td>
+                <td><input type="button" ng-click="DeleteData(cityData1)" value="Delete" /></td>
+            </tr>
+        </table>
+
+        <table style="overflow-y:scroll">
+            <tr ng-repeat="x in content">
+                <td>{{ x.CityName }}</td>
+                <td>{{ x.Description }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<script >
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $http) {
+
+        $http.get("http://localhost/Publishjobs/Api/Citymaster/")
+        .then(function (response) {
+            $scope.content = response.data;
+            debugger;
+        });
+
+
+        $http.response
+
+
+        $scope.SendData = function (cityData) {
+            debugger;
+            var a1 = $scope.cityData.CityName;
+            var b1 = $scope.cityData.Description;
+
+            $http.post("http://localhost/Publishjobs/Api/Citymaster/0", {
+                'CityName': cityData.CityName,
+                'Description': cityData.Description,
+            }).success(function (data, status, headers, config) {
+                debugger;
+                alert("Data Saved!!!!");
+
+                $http.get("http://localhost/Publishjobs/Api/Citymaster/").then(function (response) {
+                        $scope.content = response.data;
+                });
+                //console.log("Data Inserted Successfully");
+            });
+        };
+        
+
+        //$scope.DeleteData = function (cityData1) {
+
+
+        //    debugger;
+
+           
+            
+        //    $http.delete('http://localhost/Publishjobs/Api/Citymaster/' + 6)
+        //    .success(function (data, status, headers) {
+        //        alert("ok");
+        //        //$scope.ServerResponse = data;
+        //    })
+
+
+
+
+
+
+
+           
+
+        //    //var cityId = cityData1.CityId;
+        //    ////var url = "http://localhost/Publishjobs/Api/Citymaster/" + cityId;
+
+        //    //$http.delete("http://localhost/Publishjobs/api/citymaster/6", {
+
+        //    //    'CityId': cityData1.CityId,
+        //    //}
+        //    //)
+        //    //    .success(function (data, status, headers) {
+        //    //        alert("Data Deleted!!!!");
+        //    //    $scope.ServerResponse = data;
+        //    //})
+
+
+        //    //$http.delete("http://localhost/Publishjobs/Api/Citymaster/" + cityId).
+        //    //    success(function (data, status, headers, config) {
+        //    //    debugger;
+        //    //    alert("Data Deleted!!!!");
+        //    //    console.log("Data Inserted Successfully");
+        //    //});
+        //};
+
+
+        $scope.DeleteData1 = function (cityData1) {
+            debugger;
+            var cityId = cityData1.CityId;
+            //var a1 = $scope.cityData.CityName;
+
+            //Defining $http service for deleting a person
+            $http({
+                method: 'DELETE',
+                url: 'http://localhost/Publishjobs/Api/Citymaster/' + cityId
+            }).
+            success(function (data) {
+                //Showing Success message
+                $scope.status = "The City Deleted Successfully!!!";
+                //Loading people to the $scope
+                GetPersons();
+            })
+            .error(function (error) {
+                //Showing error message
+                $scope.status = 'Unable to delete a City: ' + error.message;
+            });
+        }
+
+        $scope.DeleteData = function (cityData1) {
+            debugger;
+            $http.delete('http://localhost/Publishjobs/api/citymaster/' + cityData1.CityId).success(function (data) {
+                debugger;
+                alert("Deleted successfully!!");
+
+                $http.get('http://localhost/Publishjobs/api/citymaster').success(function (data) {
+                    debugger;
+                    $scope.cityData1 = data;
+                })
+            }).error(function (data) {
+                $scope.error = "An error has occured while deleting! " + data;
+            });
+        };
+
+
+
+        $scope.EditCity = function (cityData) {
+            debugger;
+            var a1 = $scope.cityData.CityName;
+            var b1 = $scope.cityData.Description;
+            var cityId = cityData.CityId;
+
+            $http.update("http://localhost/Publishjobs/Api/Citymaster/"+cityId, {
+                'CityName': cityData.CityName,
+                'Description': cityData.Description,
+            }).success(function (data, status, headers, config) {
+                debugger;
+                alert("Data Saved!!!!");
+                console.log("Data Inserted Successfully");
+            });
+        };
+    });
+</script>
+

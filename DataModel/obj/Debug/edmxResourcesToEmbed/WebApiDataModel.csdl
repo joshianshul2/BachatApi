@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bmwModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="bmwEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CategoryMasters" EntityType="bmwModel.CategoryMaster" />
+    <EntitySet Name="ItemMasters" EntityType="bmwModel.ItemMaster" />
+    <EntitySet Name="SubCategoryMasters" EntityType="bmwModel.SubCategoryMaster" />
+    <EntitySet Name="OrderMasters" EntityType="bmwModel.OrderMaster" />
+  </EntityContainer>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="PK_CategoryId" />
+    </Key>
+    <Property Name="PK_CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ItemMaster">
+    <Key>
+      <PropertyRef Name="PK_ItemId" />
+    </Key>
+    <Property Name="PK_ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Rate" Type="Double" />
+    <Property Name="OfferRate" Type="Double" />
+    <Property Name="ImageName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="Double" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="IsCOD" Type="Boolean" />
+    <Property Name="IsFreeDel" Type="Boolean" />
+    <Property Name="ShowFrontTop_3" Type="Boolean" />
+    <Property Name="ShowFrontMid_3" Type="Boolean" />
+    <Property Name="ShowFrontBottom_3" Type="Boolean" />
+    <Property Name="ShowFrontSlider_10" Type="Boolean" />
+    <Property Name="ShowLeftFront_5" Type="Boolean" />
+    <Property Name="ShowFrontSingle_1" Type="Boolean" />
+    <Property Name="ShowTop3" Type="Boolean" />
+    <Property Name="ShowBottom9" Type="Boolean" />
+    <Property Name="ShowSlider9" Type="Boolean" />
+    <Property Name="ShowLeft5" Type="Boolean" />
+    <Property Name="Position" Type="Int32" />
+    <Property Name="FrontPosition" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubCategoryMaster">
+    <Key>
+      <PropertyRef Name="PK_SubCategoryId" />
+    </Key>
+    <Property Name="PK_SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="OrderMaster">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="LandMark" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bmwModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="PK_CategoryId" />
+    </Key>
+    <Property Name="PK_CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreateDate" Type="date" />
+  </EntityType>
+  <EntityType Name="ItemMaster">
+    <Key>
+      <PropertyRef Name="PK_ItemId" />
+    </Key>
+    <Property Name="PK_ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubCategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Rate" Type="float" />
+    <Property Name="OfferRate" Type="float" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Discount" Type="float" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="IsCOD" Type="bit" />
+    <Property Name="IsFreeDel" Type="bit" />
+    <Property Name="ShowFrontTop_3" Type="bit" />
+    <Property Name="ShowFrontMid_3" Type="bit" />
+    <Property Name="ShowFrontBottom_3" Type="bit" />
+    <Property Name="ShowFrontSlider_10" Type="bit" />
+    <Property Name="ShowLeftFront_5" Type="bit" />
+    <Property Name="ShowFrontSingle_1" Type="bit" />
+    <Property Name="ShowTop3" Type="bit" />
+    <Property Name="ShowBottom9" Type="bit" />
+    <Property Name="ShowSlider9" Type="bit" />
+    <Property Name="ShowLeft5" Type="bit" />
+    <Property Name="Position" Type="int" />
+    <Property Name="FrontPosition" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OrderMaster">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="nchar" MaxLength="12" />
+    <Property Name="LandMark" Type="nchar" MaxLength="50" />
+    <Property Name="City" Type="nchar" MaxLength="50" />
+    <Property Name="AddressType" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SubCategoryMaster">
+    <Key>
+      <PropertyRef Name="PK_SubCategoryId" />
+    </Key>
+    <Property Name="PK_SubCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SubCategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreateDate" Type="date" />
+  </EntityType>
+  <EntityContainer Name="bmwModelStoreContainer">
+    <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemMaster" EntityType="Self.ItemMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategoryMaster" EntityType="Self.SubCategoryMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

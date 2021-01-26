@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bmwModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="PK_CategoryId" />
+          </Key>
+          <Property Name="PK_CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ItemMaster">
+          <Key>
+            <PropertyRef Name="PK_ItemId" />
+          </Key>
+          <Property Name="PK_ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubCategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="OfferRate" Type="float" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Quantity" Type="float" />
+          <Property Name="IsCOD" Type="bit" />
+          <Property Name="IsFreeDel" Type="bit" />
+          <Property Name="ShowFrontTop_3" Type="bit" />
+          <Property Name="ShowFrontMid_3" Type="bit" />
+          <Property Name="ShowFrontBottom_3" Type="bit" />
+          <Property Name="ShowFrontSlider_10" Type="bit" />
+          <Property Name="ShowLeftFront_5" Type="bit" />
+          <Property Name="ShowFrontSingle_1" Type="bit" />
+          <Property Name="ShowTop3" Type="bit" />
+          <Property Name="ShowBottom9" Type="bit" />
+          <Property Name="ShowSlider9" Type="bit" />
+          <Property Name="ShowLeft5" Type="bit" />
+          <Property Name="Position" Type="int" />
+          <Property Name="FrontPosition" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderMaster">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="nchar" MaxLength="12" />
+          <Property Name="LandMark" Type="nchar" MaxLength="50" />
+          <Property Name="City" Type="nchar" MaxLength="50" />
+          <Property Name="AddressType" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubCategoryMaster">
+          <Key>
+            <PropertyRef Name="PK_SubCategoryId" />
+          </Key>
+          <Property Name="PK_SubCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubCategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="date" />
+        </EntityType>
+        <EntityContainer Name="bmwModelStoreContainer">
+          <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemMaster" EntityType="Self.ItemMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategoryMaster" EntityType="Self.SubCategoryMaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bmwModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bmwEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryMasters" EntityType="bmwModel.CategoryMaster" />
+          <EntitySet Name="ItemMasters" EntityType="bmwModel.ItemMaster" />
+          <EntitySet Name="SubCategoryMasters" EntityType="bmwModel.SubCategoryMaster" />
+          <EntitySet Name="OrderMasters" EntityType="bmwModel.OrderMaster" />
+        </EntityContainer>
+        <EntityType Name="CategoryMaster">
+          <Key>
+            <PropertyRef Name="PK_CategoryId" />
+          </Key>
+          <Property Name="PK_CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ItemMaster">
+          <Key>
+            <PropertyRef Name="PK_ItemId" />
+          </Key>
+          <Property Name="PK_ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="OfferRate" Type="Double" />
+          <Property Name="ImageName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Quantity" Type="Double" />
+          <Property Name="IsCOD" Type="Boolean" />
+          <Property Name="IsFreeDel" Type="Boolean" />
+          <Property Name="ShowFrontTop_3" Type="Boolean" />
+          <Property Name="ShowFrontMid_3" Type="Boolean" />
+          <Property Name="ShowFrontBottom_3" Type="Boolean" />
+          <Property Name="ShowFrontSlider_10" Type="Boolean" />
+          <Property Name="ShowLeftFront_5" Type="Boolean" />
+          <Property Name="ShowFrontSingle_1" Type="Boolean" />
+          <Property Name="ShowTop3" Type="Boolean" />
+          <Property Name="ShowBottom9" Type="Boolean" />
+          <Property Name="ShowSlider9" Type="Boolean" />
+          <Property Name="ShowLeft5" Type="Boolean" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="FrontPosition" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SubCategoryMaster">
+          <Key>
+            <PropertyRef Name="PK_SubCategoryId" />
+          </Key>
+          <Property Name="PK_SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="OrderMaster">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="LandMark" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bmwModelStoreContainer" CdmEntityContainer="bmwEntities">
+          <EntitySetMapping Name="CategoryMasters">
+            <EntityTypeMapping TypeName="bmwModel.CategoryMaster">
+              <MappingFragment StoreEntitySet="CategoryMaster">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="PK_CategoryId" ColumnName="PK_CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemMasters">
+            <EntityTypeMapping TypeName="bmwModel.ItemMaster">
+              <MappingFragment StoreEntitySet="ItemMaster">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FrontPosition" ColumnName="FrontPosition" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ShowLeft5" ColumnName="ShowLeft5" />
+                <ScalarProperty Name="ShowSlider9" ColumnName="ShowSlider9" />
+                <ScalarProperty Name="ShowBottom9" ColumnName="ShowBottom9" />
+                <ScalarProperty Name="ShowTop3" ColumnName="ShowTop3" />
+                <ScalarProperty Name="ShowFrontSingle_1" ColumnName="ShowFrontSingle_1" />
+                <ScalarProperty Name="ShowLeftFront_5" ColumnName="ShowLeftFront_5" />
+                <ScalarProperty Name="ShowFrontSlider_10" ColumnName="ShowFrontSlider_10" />
+                <ScalarProperty Name="ShowFrontBottom_3" ColumnName="ShowFrontBottom_3" />
+                <ScalarProperty Name="ShowFrontMid_3" ColumnName="ShowFrontMid_3" />
+                <ScalarProperty Name="ShowFrontTop_3" ColumnName="ShowFrontTop_3" />
+                <ScalarProperty Name="IsFreeDel" ColumnName="IsFreeDel" />
+                <ScalarProperty Name="IsCOD" ColumnName="IsCOD" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="OfferRate" ColumnName="OfferRate" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="PK_ItemId" ColumnName="PK_ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategoryMasters">
+            <EntityTypeMapping TypeName="bmwModel.SubCategoryMaster">
+              <MappingFragment StoreEntitySet="SubCategoryMaster">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="PK_SubCategoryId" ColumnName="PK_SubCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMasters">
+            <EntityTypeMapping TypeName="bmwModel.OrderMaster">
+              <MappingFragment StoreEntitySet="OrderMaster">
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="LandMark" ColumnName="LandMark" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
